@@ -1,0 +1,28 @@
+<mat-drawer-container class="example-container" autosize opened>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <div class="sidebar-top">
+      <mat-icon class="mat-18">home</mat-icon>
+    </div>
+    <div class="sidebar-middle">
+      <div class="sidebar-icon">
+        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+      </div>
+      <div class="sidebar-icon">
+        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+      </div>
+      <div class="sidebar-icon">
+        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+      </div>
+    </div>
+    <div class="sidebar-bottom">
+      <mat-icon class="mat-18">settings</mat-icon>
+    </div>
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <button type="button" mat-button (click)="drawer.toggle()">
+      Toggle sidenav
+    </button>
+  </div>
+
+</mat-drawer-container>
