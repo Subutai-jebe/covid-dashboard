@@ -1,0 +1,33 @@
+{
+  "name": "crypto-dashboard-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/crypto-dashboard-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/crypto-dashboard-e2e/cypress.config.ts",
+        "devServerTarget": "crypto-dashboard:serve:development",
+        "testingType": "e2e"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "crypto-dashboard:serve:production"
+        },
+        "ci": {
+          "devServerTarget": "crypto-dashboard:serve-static"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/crypto-dashboard-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["crypto-dashboard"]
+}
