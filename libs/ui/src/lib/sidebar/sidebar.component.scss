@@ -20,6 +20,7 @@
    0 4px 25px 0 rgba(0, 0, 0, .12),
    0 8px 10px -5px rgba(0, 0, 0, .2);
    border: 1px solid transparent;
+   cursor: pointer;
 
   ::ng-deep .mat-drawer-inner-container {
     display: flex;
@@ -27,5 +28,7 @@
     justify-content: space-between;
   }
 }
+
+
 
 
