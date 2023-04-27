@@ -1,17 +1,17 @@
-<mat-drawer-container class="example-container" autosize opened>
-  <mat-drawer #drawer class="example-sidenav" mode="side">
+<mat-drawer-container class="example-container" autosize >
+  <mat-drawer #drawer class="example-sidenav" mode="side" [opened]="true">
     <div class="sidebar-top">
-      <mat-icon class="mat-18">home</mat-icon>
+      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
     </div>
     <div class="sidebar-middle">
       <div class="sidebar-icon">
-        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+          <mat-icon aria-hidden="false" matTooltip="My tooltip" fontIcon="home"></mat-icon>
       </div>
       <div class="sidebar-icon">
-        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+        <mat-icon aria-hidden="false" matTooltip="My tooltip" fontIcon="account_balance_wallet"></mat-icon>
       </div>
       <div class="sidebar-icon">
-        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+        <mat-icon aria-hidden="false" matTooltip="My tooltip" fontIcon="business"></mat-icon>
       </div>
     </div>
     <div class="sidebar-bottom">
@@ -24,5 +24,4 @@
       Toggle sidenav
     </button>
   </div>
-
 </mat-drawer-container>

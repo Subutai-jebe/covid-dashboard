@@ -1,0 +1,36 @@
+mat-card {
+  cursor: pointer;
+  height: 100%;
+  transition: all .2s ease-in-out;
+  box-shadow: none !important;
+  font-weight: bold;
+  color: white;
+  background-color:#613de6;
+
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 13.2px 7.2px 0 var(--callout-shadow-color, rgba(0, 0, 0, .132)),
+      0 .6px 1.8px 0 var(--callout-shadow-secondary-color, rgba(0, 0, 0, .108)) !important;
+  }
+
+  &.noHover {
+    &:hover {
+      transform: none;
+      cursor: default;
+      box-shadow: none;
+      // opacity: .8;
+    }
+  }
+
+  &.border-shadow {
+    box-shadow: 0 13.2px 7.2px 0 var(--callout-shadow-color, rgba(0, 0, 0, .132)),
+      0 .6px 1.8px 0 var(--callout-shadow-secondary-color, rgba(0, 0, 0, .108));
+  }
+
+  mat-card-content {
+    color: grey;
+    font-size: smaller;
+  }
+
+}

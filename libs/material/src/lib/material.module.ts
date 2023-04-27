@@ -21,6 +21,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
 
 
 @NgModule({
@@ -44,7 +46,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatExpansionModule,
     MatTabsModule,
     MatSlideToggleModule,
-    MatSelectModule],
+    MatSelectModule, MatTooltipModule],
     exports: [
       MatIconModule,
       MatAutocompleteModule,
@@ -66,7 +68,8 @@ import { MatSelectModule } from '@angular/material/select';
       MatExpansionModule,
       MatTabsModule,
       MatSlideToggleModule,
-      MatSelectModule
+      MatSelectModule,
+      MatTooltipModule
     ]
 })
 export class MaterialModule {}
