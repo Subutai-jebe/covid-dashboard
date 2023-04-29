@@ -7,6 +7,8 @@ import { MainSidebarComponent } from './main-sidebar/main-sidebar.component';
 import { MainComponent } from './main/main.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { BannerComponent } from './banner/banner.component';
+import { TileComponent } from './tile/tile.component';
 
 @NgModule({
   imports: [CommonModule, MaterialModule],
@@ -17,6 +19,8 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     MainComponent,
     SidenavComponent,
     ToolbarComponent,
+    BannerComponent,
+    TileComponent,
   ],
   exports: [
     SidebarComponent,
@@ -24,6 +28,8 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     MainComponent,
     SidenavComponent,
     ToolbarComponent,
+    BannerComponent,
+    TileComponent,
   ],
 })
 export class UiModule {}

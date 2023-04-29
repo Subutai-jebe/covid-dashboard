@@ -1,3 +1,32 @@
-<p>
-  dashboard works!
-</p>
+<section>
+  <consitency-is-key-banner>
+    <div class="banner-left">
+      <p>
+        <b>
+          WORLD
+        </b>
+      </p>
+    </div>
+  </consitency-is-key-banner>
+
+</section>
+
+<section class="p-3">
+
+  <!-- <h3>Explore</h3> -->
+
+  <div *ngIf="allRegions">
+    <div class="row" [@listAnimation]="allRegions.length">
+      <div class="col-md-6 mb-3" *ngFor="let region of allRegions">
+        <consitency-is-key-tile class="main-item" (click)="toDetail(region)">
+          <div class="country">
+            {{ region }}
+          </div>
+        </consitency-is-key-tile>
+      </div>
+    </div>
+  </div>
+
+
+
+</section>
