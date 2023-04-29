@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { filter, from, map, mergeMap, toArray } from 'rxjs';
+import { distinctUntilChanged, filter, from, map, mergeMap, switchMap, tap, toArray } from 'rxjs';
 
 @Injectable()
 export class CountryService {
@@ -11,6 +11,8 @@ export class CountryService {
 
    }
 
+   // TODO: Make types out of data coming from backend
+   // TODO: Make everything an observable and feed to front end
    getRegions() {
     return this.http.get(this.countriesEndpoint).pipe(
       mergeMap((result) => from(result as any[])),
@@ -19,6 +21,32 @@ export class CountryService {
       toArray(),
       map((val: Array<string>) => [...new Set(val)]),
     )
+   }
+
+
+   getAllCountries() {
+      return this.http.get(this.countriesEndpoint).pipe(
+        distinctUntilChanged(),
+        switchMap((result) => from(result as any).pipe(
+          map((backendData: any) => ({
+            name: backendData['name'],
+            population: backendData['population'],
+            flag: backendData['flag'],
+            region: backendData['region']
+          }))
+        )),
+        toArray()
+      )
+   }
+
+   getCountriesInRegion(region: string) {
+      return this.getAllCountries().pipe(
+        distinctUntilChanged(),
+        switchMap((val: Array<any>) => from(val)),
+        filter((countryInfo: any) => countryInfo.region === region),
+        toArray(),
+        tap(result => console.log({ countriesInRegion: result }))
+      )
    }
 
 
