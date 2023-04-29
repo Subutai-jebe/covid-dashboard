@@ -5,6 +5,8 @@ import { CardComponent } from './card/card.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { MainSidebarComponent } from './main-sidebar/main-sidebar.component';
 import { MainComponent } from './main/main.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 @NgModule({
   imports: [CommonModule, MaterialModule],
@@ -12,8 +14,16 @@ import { MainComponent } from './main/main.component';
     CardComponent,
     SidebarComponent,
     MainSidebarComponent,
-    MainComponent
+    MainComponent,
+    SidenavComponent,
+    ToolbarComponent,
   ],
-  exports: [SidebarComponent, MainSidebarComponent, MainComponent],
+  exports: [
+    SidebarComponent,
+    MainSidebarComponent,
+    MainComponent,
+    SidenavComponent,
+    ToolbarComponent,
+  ],
 })
 export class UiModule {}

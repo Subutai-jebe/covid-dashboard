@@ -1,0 +1,26 @@
+mat-sidenav-container {
+  height: 100vh;
+  color: red;
+
+  mat-sidenav-content {
+    overflow-x: hidden !important;
+    overflow-y: auto;
+  }
+
+
+  mat-sidenav {
+    width: 260px;
+    padding: 5px;
+    cursor: pointer;
+    border: none;
+    // box-shadow:
+    //   -1px 0 13px -3px rgba(0, 0, 0, .132),
+    //   -1px 0 13px -6px rgba(0, 0, 0, .132);
+    box-shadow: 0 16px 38px -12px rgba(0, 0, 0, .56),
+      0 4px 25px 0 rgba(0, 0, 0, .12),
+      0 8px 10px -5px rgba(0, 0, 0, .2);
+    border: 1px solid transparent;
+  }
+
+
+}
