@@ -1,0 +1,16 @@
+<header class="banner" role="banner">
+
+  <div class="info">
+    <div class="info-content ml-4 mt-3">
+      <ng-content select=".banner-left"></ng-content>
+    </div>
+  </div>
+
+
+
+  <div class="buttons">
+    <ng-content select=".banner-right"></ng-content>
+  </div>
+
+</header>
+<mat-progress-bar *ngIf="loading" mode="indeterminate" color="primary"></mat-progress-bar>
