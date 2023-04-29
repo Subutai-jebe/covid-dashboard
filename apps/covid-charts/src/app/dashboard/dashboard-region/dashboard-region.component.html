@@ -3,3 +3,24 @@
     <h3> {{ region }}</h3>
   </div>
 </consitency-is-key-banner>
+
+<div class="container">
+  <div class="row">
+    <div class="col-4" *ngFor="let country of countries" >
+      <mat-card class="p-2 m-2">
+          <mat-card-header>
+              <mat-card-title>{{ country.name.common }}</mat-card-title>
+              <mat-card-subtitle>Population: {{ country.population }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+                    <p matCardImage>{{ country.flag }}</p>
+          </mat-card-content>
+          <mat-card-actions align="start">
+              <button
+              (click)="toDetail(country.name.common)"
+              mat-raised-button>View covid data</button>
+          </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
