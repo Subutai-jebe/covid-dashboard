@@ -9,9 +9,20 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { BannerComponent } from './banner/banner.component';
 import { TileComponent } from './tile/tile.component';
+import { LineGraphComponent } from './line-graph/line-graph.component';
+
+import { NgxGraphModule } from '@swimlane/ngx-graph';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  imports: [CommonModule, MaterialModule],
+  imports: [
+    CommonModule,
+    MaterialModule,
+    NgxGraphModule,
+    NgxChartsModule,
+    FormsModule
+  ],
   declarations: [
     CardComponent,
     SidebarComponent,
@@ -21,6 +32,7 @@ import { TileComponent } from './tile/tile.component';
     ToolbarComponent,
     BannerComponent,
     TileComponent,
+    LineGraphComponent,
   ],
   exports: [
     SidebarComponent,
@@ -30,6 +42,7 @@ import { TileComponent } from './tile/tile.component';
     ToolbarComponent,
     BannerComponent,
     TileComponent,
+    LineGraphComponent,
   ],
 })
 export class UiModule {}
