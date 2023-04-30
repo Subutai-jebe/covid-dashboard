@@ -1,7 +1,7 @@
+import { CountryService } from './../country/country.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, shareReplay } from 'rxjs';
-import { CountryService } from './country.service';
 
 @Injectable({
   providedIn: 'root'
