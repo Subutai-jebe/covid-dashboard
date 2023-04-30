@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CountryService } from '../service/country.service';
+import { CountryService } from '../service/country/country.service';
 
 @Component({
   selector: 'consitency-is-key-dashboard-region',

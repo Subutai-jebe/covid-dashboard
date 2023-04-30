@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CountryService } from './service/country.service';
 import { trigger, transition, query, style, stagger, animate } from '@angular/animations';
 import { Router } from '@angular/router';
+import { CountryService } from './service/country/country.service';
 
 @Component({
   selector: 'consitency-is-key-dashboard',

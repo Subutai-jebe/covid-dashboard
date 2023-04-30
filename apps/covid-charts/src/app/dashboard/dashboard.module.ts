@@ -2,13 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard.component';
 import { RouterModule, Routes } from '@angular/router';
-import { CountryService } from './service/country.service';
+
 import { UiModule } from '@consitency-is-key/ui';
 import { DashboardRegionComponent } from './dashboard-region/dashboard-region.component';
 import { MaterialModule } from '@consitency-is-key/material';
 import { DashboardGraphComponent } from './dashboard-graph/dashboard-graph.component';
-import { CovidCaseService } from './service/covid-case.service';
-import { GraphService } from './service/graph.service';
+import { CountryService } from './service/country/country.service';
+import { CovidCaseService } from './service/covid-case/covid-case.service';
+import { GraphService } from './service/graph/graph.service';
 
 const routes: Routes = [
   {

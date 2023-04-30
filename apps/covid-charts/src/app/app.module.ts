@@ -7,6 +7,7 @@ import { appRoutes } from './app.routes';
 import { NxWelcomeComponent } from './nx-welcome.component';
 import { UiModule } from '@consitency-is-key/ui';
 import { HttpClientModule } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent],
@@ -17,7 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
     UiModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
