@@ -8,6 +8,7 @@ import { DashboardRegionComponent } from './dashboard-region/dashboard-region.co
 import { MaterialModule } from '@consitency-is-key/material';
 import { DashboardGraphComponent } from './dashboard-graph/dashboard-graph.component';
 import { CovidCaseService } from './service/covid-case.service';
+import { GraphService } from './service/graph.service';
 
 const routes: Routes = [
   {
@@ -36,6 +37,6 @@ const routes: Routes = [
     UiModule,
     MaterialModule,
   ],
-  providers: [CountryService, CovidCaseService],
+  providers: [CountryService, CovidCaseService, GraphService],
 })
 export class DashboardModule {}
