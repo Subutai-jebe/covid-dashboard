@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { map, switchMap, tap } from 'rxjs';
-import { CovidCaseService } from '../service/covid-case.service';
-import { GraphService } from '../service/graph.service';
+import { CovidCaseService } from '../service/covid-case/covid-case.service';
+import { GraphService } from '../service/graph/graph.service';
+
 
 @Component({
   selector: 'consitency-is-key-dashboard-graph',
@@ -11,6 +12,7 @@ import { GraphService } from '../service/graph.service';
 })
 export class DashboardGraphComponent implements OnInit {
   countryName = '';
+  covidLineChartData: any = [];
 
   constructor(private ar: ActivatedRoute,
     private covidService: CovidCaseService,
@@ -25,7 +27,10 @@ export class DashboardGraphComponent implements OnInit {
           this.countryName = country;
         }),
         switchMap(() => this.graphService.getFullGraph())
-      ).subscribe()
+      ).subscribe(({ deaths, active, confirmed, recovered }) => {
+        this.covidLineChartData = [deaths, active, confirmed];
+        console.log({covidData: this.covidLineChartData })
+      });
   }
 
 }

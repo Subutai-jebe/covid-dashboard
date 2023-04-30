@@ -1,3 +1,16 @@
+<ng-template #loading>
+  <div class="d-flex justify-content-center">
+    Loading...
+  </div>
+</ng-template>
 <div class="title p-3">
   {{ countryName }}
 </div>
+
+<section *ngIf="covidLineChartData.length else loading">
+  <consitency-is-key-line-graph [data]="covidLineChartData">
+
+  </consitency-is-key-line-graph>
+</section>
+
+
