@@ -8,15 +8,20 @@
   [xAxisLabel]="xAxisLabel"
   [yAxisLabel]="yAxisLabel"
   [timeline]="timeline"
-  [results]="data"
-  (select)="onSelect($event)"
-  (activate)="onActivate($event)"
-  (deactivate)="onDeactivate($event)">
+  [results]="data">
 </ngx-charts-line-chart>
-<!-- <div class="controls">
-  <h3 class="pt-2">
-    Showing data from the last {{ slider.value }} days.
-  </h3>
-  <mat-slider thumbLabel [value]="30" #slider class="w-100" [(ngModel)]="sliderValue"
-     tickInterval="5" min="1" max="60"></mat-slider>
-</div> -->
+<div class="controls">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 justify-center">
+          <mat-slider thumbLabel value="100" class="w-100"
+          [(ngModel)]="sliderValue"
+          (input)="onSliderChange($event)"
+            tickInterval="100" min="0" max="1000">
+          <input matSliderThumb>
+          </mat-slider>
+      </div>
+    </div>
+  </div>
+
+</div>

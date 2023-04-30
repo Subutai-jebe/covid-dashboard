@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { map, switchMap, tap } from 'rxjs';
-import { CovidCaseService } from '../service/covid-case/covid-case.service';
+import { ActivatedRoute, UrlSegment } from '@angular/router';
+import { switchMap } from 'rxjs';
 import { GraphService } from '../service/graph/graph.service';
-
+import { LineChartData } from '../models/LineChartData';
+import { CovidCaseService } from '../service/covid-case/covid-case.service';
 
 @Component({
   selector: 'consitency-is-key-dashboard-graph',
@@ -12,25 +12,31 @@ import { GraphService } from '../service/graph/graph.service';
 })
 export class DashboardGraphComponent implements OnInit {
   countryName = '';
-  covidLineChartData: any = [];
+  covidLineChartData: LineChartData[] = [];
 
   constructor(private ar: ActivatedRoute,
-    private covidService: CovidCaseService,
-    private graphService: GraphService
+    private graphService: GraphService,
+    private covidService: CovidCaseService
     ) {}
 
   ngOnInit(): void {
       this.ar.url.pipe(
-        map(url => {
-          const country = url[1].path;
-          this.covidService.setCovidSource(country);
-          this.countryName = country;
-        }),
-        switchMap(() => this.graphService.getFullGraph())
+        switchMap((url: UrlSegment[]) => {
+          this.countryName = url[1].path;
+          this.covidService.setCovidSource(this.countryName);
+          return this.graphService.getFullGraph()
+        })
       ).subscribe(({ deaths, active, confirmed, recovered }) => {
-        this.covidLineChartData = [deaths, active, confirmed];
+        this.covidLineChartData = [deaths, active, confirmed, recovered];
         console.log({covidData: this.covidLineChartData })
       });
+  }
+
+  updateGraph(daysFrom2020: any) {
+    this.graphService.getFullGraph(daysFrom2020).subscribe(({ deaths, active, confirmed, recovered }) => {
+      this.covidLineChartData = [deaths, active, confirmed, recovered];
+      console.log({ covidData: this.covidLineChartData })
+    })
   }
 
 }

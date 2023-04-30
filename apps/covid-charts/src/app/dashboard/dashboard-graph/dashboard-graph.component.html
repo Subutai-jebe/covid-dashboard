@@ -8,7 +8,7 @@
 </div>
 
 <section *ngIf="covidLineChartData.length else loading">
-  <consitency-is-key-line-graph [data]="covidLineChartData">
+  <consitency-is-key-line-graph [data]="covidLineChartData" (updateGraph)="updateGraph($event)">
 
   </consitency-is-key-line-graph>
 </section>

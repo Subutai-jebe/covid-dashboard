@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Injectable } from '@angular/core';
-import { Observable, UnaryFunction, forkJoin, from, map, pipe, switchMap, take, takeLast, tap, toArray } from 'rxjs';
+import { Observable, UnaryFunction, forkJoin, from, map, pipe, switchMap, take, tap, toArray } from 'rxjs';
 import { CovidCaseService } from '../covid-case/covid-case.service';
 import { LineChartData } from '../../models/LineChartData';
 import { CovidCountryData } from '../../models/CovidCountryInfo';
@@ -15,13 +15,13 @@ export class GraphService {
     private covidService: CovidCaseService
     ) { }
 
-  formatForLineGraph({ dataType = 'Deaths', daysSinceToday = 190 } = {}):
+  formatForLineGraph({ dataType = 'Deaths', takeValue = 190 } = {}):
   UnaryFunction<Observable<any>, Observable<LineChartData>> {
     return pipe(
       switchMap((data: CovidCountryData[]) => from(data)),
-      take(daysSinceToday),
+      take(takeValue),
       map((eachDay: CovidCountryData) => ({
-        'name': this.datePipe.transform(eachDay.Date, 'MMM d YY'), // for our ngx graph
+        'name': this.datePipe.transform(eachDay.Date, 'MMM d YYYY'), // for our ngx graph
         'value': (eachDay as any)[dataType],
       })),
       toArray(),
@@ -33,11 +33,11 @@ export class GraphService {
     )
   }
 
-  getFullGraph(): Observable<{deaths: LineChartData; active: LineChartData; confirmed: LineChartData;recovered: LineChartData;}> {
-    const deaths$ = this.covidService.COVID_DATA_SOURCE$.pipe(this.formatForLineGraph({ dataType: 'Deaths' }))
-    const active$ = this.covidService.COVID_DATA_SOURCE$.pipe(this.formatForLineGraph({ dataType: 'Active' }))
-    const confirmed$ = this.covidService.COVID_DATA_SOURCE$.pipe(this.formatForLineGraph({ dataType: 'Confirmed' }))
-    const recovered$ = this.covidService.COVID_DATA_SOURCE$.pipe(this.formatForLineGraph({ dataType: 'Recovered' }))
+  getFullGraph(takeValue?: number): Observable<{deaths: LineChartData; active: LineChartData; confirmed: LineChartData;recovered: LineChartData;}> {
+    const deaths$ = this.covidService.COVID_DATA_SOURCE$.pipe(this.formatForLineGraph({ dataType: 'Deaths', takeValue }))
+    const active$ = this.covidService.COVID_DATA_SOURCE$.pipe(this.formatForLineGraph({ dataType: 'Active', takeValue }))
+    const confirmed$ = this.covidService.COVID_DATA_SOURCE$.pipe(this.formatForLineGraph({ dataType: 'Confirmed', takeValue }))
+    const recovered$ = this.covidService.COVID_DATA_SOURCE$.pipe(this.formatForLineGraph({ dataType: 'Recovered', takeValue }))
 
     const fullChart$ = forkJoin({
       deaths: deaths$,

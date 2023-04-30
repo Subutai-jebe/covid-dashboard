@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'consitency-is-key-line-graph',
@@ -6,75 +6,10 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./line-graph.component.scss'],
 })
 export class LineGraphComponent {
-  @Input() data: any = [
-    {
-      "name": "Germany",
-      "series": [
-        {
-          "name": "1990",
-          "value": 62000000
-        },
-        {
-          "name": "2010",
-          "value": 73000000
-        },
-        {
-          "name": "2011",
-          "value": 89400000
-        }
-      ]
-    },
-
-    {
-      "name": "USA",
-      "series": [
-        {
-          "name": "1990",
-          "value": 250000000
-        },
-        {
-          "name": "2010",
-          "value": 309000000
-        },
-        {
-          "name": "2011",
-          "value": 311000000
-        }
-      ]
-    },
-
-    {
-      "name": "France",
-      "series": [
-        {
-          "name": "1990",
-          "value": 58000000
-        },
-        {
-          "name": "2010",
-          "value": 50000020
-        },
-        {
-          "name": "2011",
-          "value": 58000000
-        }
-      ]
-    },
-    {
-      "name": "UK",
-      "series": [
-        {
-          "name": "1990",
-          "value": 57000000
-        },
-        {
-          "name": "2010",
-          "value": 62000000
-        }
-      ]
-    }
-  ];
-  view: [number, number]= [800, 400];
+  @Input() data: any = [];
+  @Output() updateGraph = new EventEmitter();
+  view: [number, number]= [800, 600];
+  sliderValue = 0;
 
   // options
   legend = true;
@@ -90,22 +25,16 @@ export class LineGraphComponent {
   autoScale = true;
 
   colorScheme: any = {
-    domain: ['red', 'green', 'orange', 'lightgreen']
+    domain: ['cyan', 'green', 'orange', 'purple']
   };
 
   constructor() {
     Object.assign(this, { multi: this.data });
   }
 
-  onSelect(data: any): void {
-    console.log('Item clicked', JSON.parse(JSON.stringify(data)));
-  }
+  onSliderChange(num: any) {
+    console.log({ num: num.target.value })
+    this.updateGraph.emit(num.target.value);
 
-  onActivate(data: any): void {
-    console.log('Activate', JSON.parse(JSON.stringify(data)));
-  }
-
-  onDeactivate(data: any): void {
-    console.log('Deactivate', JSON.parse(JSON.stringify(data)));
   }
 }
