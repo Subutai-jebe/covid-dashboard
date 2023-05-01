@@ -13,7 +13,7 @@
         "outputPath": "dist/apps/covid-charts",
         "index": "apps/covid-charts/src/index.html",
         "main": "apps/covid-charts/src/main.ts",
-        "polyfills": ["zone.js", "angular/localize/init'"],
+        "polyfills": ["zone.js"],
         "tsConfig": "apps/covid-charts/tsconfig.app.json",
         "assets": [
           "apps/covid-charts/src/favicon.ico",

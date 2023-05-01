@@ -49,6 +49,40 @@ export class CountryService {
       )
    }
 
+  sanitize(country: string): string {
+
+    //* Change to switch statement
+
+    if (country.includes('United Kingdom')) {
+      country = 'United-Kingdom';
+    } else if (country.includes(`Côte d'Ivoire`)) {
+      country = 'Ivory-Coast';
+    } else if (country.includes('Democratic Republic of the')) {
+      country = 'Democratic Republic of the Congo';
+    }
+    else if (country.includes('Moldova (Republic of)')) {
+      country = 'Moldova';
+    } else if (country.includes('Macedonia (the former Yugoslav Republic of)')) {
+      country = 'Macedonia';
+    } else if (country.includes('Iran (Islamic Republic of)')) {
+      country = 'Iran';
+    }
+    else if (country.includes('Lao People')) {
+      country = 'Laos';
+    }
+    else if (country.includes('Korea (Democratic')) {
+      country = 'south-korea';
+    }
+    else if (country.includes('Syrian Arab Republic')) {
+      country = 'syria';
+    }
+
+
+    return country;
+
+  }
+
+
 
 
 }

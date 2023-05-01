@@ -11,10 +11,11 @@ export class CovidCaseService {
 
   public COVID_DATA_SOURCE$: Observable<CovidCountryData[]> = of([]);
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private countryService:CountryService) { }
 
   setCovidSource(country: string): void {
-    this.COVID_DATA_SOURCE$ = this.http.get<CovidCountryData[]>(`https://api.covid19api.com/total/country/${country}`).pipe(shareReplay());
+    const sanitizedCountries = this.countryService.sanitize(country);
+    this.COVID_DATA_SOURCE$ = this.http.get<CovidCountryData[]>(`https://api.covid19api.com/total/country/${sanitizedCountries}`).pipe(shareReplay());
   }
 
 }
