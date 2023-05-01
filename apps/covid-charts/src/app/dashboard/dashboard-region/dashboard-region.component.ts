@@ -16,6 +16,9 @@ export class DashboardRegionComponent implements OnInit {
   region: string
   }[] = [];
   term = '';
+  page = 1;
+  pageSize = 10;
+
 
   //TODO: this component should really be called dashboard region-detail
   // TODO as its showing the countries within the region ?
@@ -30,5 +33,12 @@ export class DashboardRegionComponent implements OnInit {
 
   toDetail(country: string) {
     this.r.navigate([`dashboard/${country}/graph`]);
+  }
+
+  refreshCountries() {
+    this.countries = this.countries.map((country, i) => ({ id: i + 1, ...country })).slice(
+      (this.page - 1) * this.pageSize,
+      (this.page - 1) * this.pageSize + this.pageSize,
+    );
   }
 }

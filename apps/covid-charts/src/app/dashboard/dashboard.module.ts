@@ -12,6 +12,7 @@ import { CovidCaseService } from './service/covid-case/covid-case.service';
 import { GraphService } from './service/graph/graph.service';
 import { SearchPipe } from '../search.pipe';
 import { FormsModule } from '@angular/forms';
+import { NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 
 const routes: Routes = [
   {
@@ -40,7 +41,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     UiModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
+    NgbPaginationModule
   ],
   providers: [CountryService, CovidCaseService, GraphService],
 })
