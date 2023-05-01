@@ -15,6 +15,7 @@ export class DashboardRegionComponent implements OnInit {
   population: number,
   region: string
   }[] = [];
+  term = '';
 
   //TODO: this component should really be called dashboard region-detail
   // TODO as its showing the countries within the region ?
@@ -23,7 +24,6 @@ export class DashboardRegionComponent implements OnInit {
 
   ngOnInit(): void {
     this.region = this.r.url.split('/')[2];
-    // get countries based on region
     this.countryService.getCountriesInRegion(this.region)
     .subscribe(countries => this.countries = countries)
   }

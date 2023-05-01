@@ -10,6 +10,8 @@ import { DashboardGraphComponent } from './dashboard-graph/dashboard-graph.compo
 import { CountryService } from './service/country/country.service';
 import { CovidCaseService } from './service/covid-case/covid-case.service';
 import { GraphService } from './service/graph/graph.service';
+import { SearchPipe } from '../search.pipe';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -31,12 +33,14 @@ const routes: Routes = [
     DashboardComponent,
     DashboardRegionComponent,
     DashboardGraphComponent,
+    SearchPipe
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     UiModule,
     MaterialModule,
+    FormsModule
   ],
   providers: [CountryService, CovidCaseService, GraphService],
 })
