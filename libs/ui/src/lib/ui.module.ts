@@ -14,6 +14,7 @@ import { LineGraphComponent } from './line-graph/line-graph.component';
 import { NgxGraphModule } from '@swimlane/ngx-graph';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { FormsModule } from '@angular/forms';
+import { PieChartComponent } from './pie-chart/pie-chart.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,7 @@ import { FormsModule } from '@angular/forms';
     MaterialModule,
     NgxGraphModule,
     NgxChartsModule,
-    FormsModule
+    FormsModule,
   ],
   declarations: [
     CardComponent,
@@ -33,6 +34,7 @@ import { FormsModule } from '@angular/forms';
     BannerComponent,
     TileComponent,
     LineGraphComponent,
+    PieChartComponent,
   ],
   exports: [
     SidebarComponent,
@@ -43,6 +45,7 @@ import { FormsModule } from '@angular/forms';
     BannerComponent,
     TileComponent,
     LineGraphComponent,
+    PieChartComponent,
   ],
 })
 export class UiModule {}

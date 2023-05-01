@@ -8,9 +8,18 @@
 </div>
 
 <section *ngIf="covidLineChartData.length else loading">
-  <consitency-is-key-line-graph [data]="covidLineChartData" (updateGraph)="updateGraph($event)">
 
-  </consitency-is-key-line-graph>
+
+  <section class="p-2">
+    <div class="row">
+      <div class="col-md-12">
+        <consitency-is-key-line-graph [data]="covidLineChartData" (updateGraph)="updateGraph($event)">
+        </consitency-is-key-line-graph>
+        <h3 class="title">Confirmed cases line graph</h3>
+      </div>
+      <div class="col-md-12">
+        <consitency-is-key-pie-chart ></consitency-is-key-pie-chart>
+      </div>
+    </div>
+  </section>
 </section>
-
-

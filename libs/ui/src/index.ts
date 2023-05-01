@@ -11,3 +11,5 @@ export * from './lib/banner/banner.component';
 export * from './lib/tile/tile.component';
 
 export * from './lib/line-graph/line-graph.component';
+
+export * from './lib/pie-chart/pie-chart.component';

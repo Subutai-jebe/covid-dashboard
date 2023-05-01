@@ -13,6 +13,7 @@ import { CovidCaseService } from '../service/covid-case/covid-case.service';
 export class DashboardGraphComponent implements OnInit {
   countryName = '';
   covidLineChartData: LineChartData[] = [];
+  pieChartData: any; // TODO Stronly type this
 
   constructor(private ar: ActivatedRoute,
     private graphService: GraphService,
@@ -24,6 +25,7 @@ export class DashboardGraphComponent implements OnInit {
         switchMap((url: UrlSegment[]) => {
           this.countryName = url[1].path;
           this.covidService.setCovidSource(this.countryName);
+          this.getPieChartData();
           return this.graphService.getFullGraph()
         })
       ).subscribe(({ deaths, active, confirmed, recovered }) => {
@@ -37,6 +39,13 @@ export class DashboardGraphComponent implements OnInit {
       this.covidLineChartData = [deaths, active, confirmed, recovered];
       console.log({ covidData: this.covidLineChartData })
     })
+  }
+
+  getPieChartData(){
+    this.graphService.getPieChartData().subscribe(
+      ({ deaths, active, confirmed, recovered }) => {
+        this.pieChartData = [deaths, active, confirmed, recovered];
+      })
   }
 
 }

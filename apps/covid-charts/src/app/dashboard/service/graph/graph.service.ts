@@ -49,5 +49,41 @@ export class GraphService {
     return fullChart$;
   }
 
+  getPieChartData(): Observable<any> {
+
+    const active$ = this.covidService.COVID_DATA_SOURCE$.pipe(
+      this.formatForPieChart({ dataType: 'Active' })
+    )
+    const confirmed$ = this.covidService.COVID_DATA_SOURCE$.pipe(
+      this.formatForPieChart({ dataType: 'Confirmed' })
+    )
+    const recovered$ = this.covidService.COVID_DATA_SOURCE$.pipe(
+      this.formatForPieChart({ dataType: 'Recovered' })
+    )
+    const deaths$ = this.covidService.COVID_DATA_SOURCE$.pipe(
+      this.formatForPieChart({ dataType: 'Deaths' })
+    )
+
+    const formattedPieChart$ = forkJoin({
+      deaths: deaths$,
+      confirmed: confirmed$,
+      recovered: recovered$,
+      active: active$
+    });
+
+    return formattedPieChart$;
+  }
+
+  formatForPieChart({ dataType = 'Deaths', takeValue = 1 } = {}): any {
+    return pipe(
+      switchMap((arr: any) => from(arr)),
+      take(takeValue),
+      map((eachDay: any) => ({
+        'name': dataType,
+        'value': eachDay[dataType],
+      })),
+    )
+  }
+
 
 }
