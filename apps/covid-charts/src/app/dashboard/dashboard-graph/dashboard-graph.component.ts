@@ -25,7 +25,7 @@ export class DashboardGraphComponent implements OnInit {
         switchMap((url: UrlSegment[]) => {
           this.countryName = url[1].path;
           this.covidService.setCovidSource(this.countryName);
-          this.getPieChartData();
+          // this.getPieChartData();
           return this.graphService.getFullGraph()
         })
       ).subscribe(({ deaths, active, confirmed, recovered }) => {
@@ -41,11 +41,11 @@ export class DashboardGraphComponent implements OnInit {
     })
   }
 
-  getPieChartData(){
-    this.graphService.getPieChartData().subscribe(
-      ({ deaths, active, confirmed, recovered }) => {
-        this.pieChartData = [deaths, active, confirmed, recovered];
-      })
-  }
+  // getPieChartData(){
+  //   this.graphService.getPieChartData().subscribe(
+  //     ({ deaths, active, confirmed, recovered }) => {
+  //       this.pieChartData = [deaths, active, confirmed, recovered];
+  //     })
+  // }
 
 }
